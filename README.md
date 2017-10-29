@@ -1,7 +1,8 @@
 # `stic` - the "Sanity-To-Insanity Converter"
 
-The `stic` is a very simple tool (written in Ruby) to convert a sane markup format to HTML5.
-I wrote it in particular to make working with the (really helpful) BEM convention more convenient.
+The `stic` is a very simple tool (~200 lines of Ruby) to convert a sane markup format to HTML5.
+I wrote it in particular to make working with
+  the (really helpful) [BEM](https://css-tricks.com/bem-101/) convention more convenient.
 
 Features:
 
@@ -12,8 +13,8 @@ Features:
 
 ## Usage
 
-It is required to have a file called `html-tags`, which maps classes to tags.
-This file may be empty, since the `div` tag is used if none was specified.
+You should have a file called `html-tags`, which maps classes to tags.
+This file may be empty, since the `div` tag is used by default if no tag was specified for a class.
 The `html-tags` file has a very simple format:
 
 ```
@@ -22,6 +23,11 @@ menu ul
 menu-item li
 menu-link a
 ```
+
+So your HTML will end up being semantic,
+  but you can conveniently define the structure with your class names only.
+(In BEM, everything is done with classes anyway.)
+If several classes are given (as in the example below), the first one decides the tag.
 
 Now you can create a `.stic` file (this is not valid HTML yet, bear with me):
 
@@ -56,11 +62,12 @@ Now you can create a `.stic` file (this is not valid HTML yet, bear with me):
 </div>
 ```
 
-Automatically generating the matching tags for classes is nice,
+The usage of the `stic.rb` script is: `./stic.rb example.stic >example.html`
+
+Automatically generating the matching tags for classes might be nice,
   but to get valid HTML, we also need the `html-head-body` mumbo-jumbo.
 This includes some tags which should not have a class attribute.
-This can be done by using the percent sign `%`.
-This can be combined with classes:
+This can be done by using the percent sign `%` (which you also can combine with classes):
 
 ```
 ;; example2.stic
