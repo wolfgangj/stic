@@ -149,15 +149,18 @@ def rep_nodes
     line.strip!
     line.sub!(/;;.*$/, '')
     case line[0]
-    when '.'
+    when '.', '%'
       scan = StrScan.new(line)
-      scan.skip # drop first dot
-      classes = scan.while(/[-_a-zA-Z0-9.$]/).split('.').map { |c| substitute_vars(c) }
-      if classes.first.upcase == classes.first
-        tag = classes.first.downcase
-        classes = classes[1..-1]
+      if scan.head == '%'
+        scan.skip
+        tag = scan.while(/[-_a-zA-Z0-9$]/)
+      end
+      if scan.head == '.'
+        scan.skip # drop first dot
+        classes = scan.while(/[-_a-zA-Z0-9.$]/).split('.').map { |c| substitute_vars(c) }
+        tag ||= tag4class(classes.first)
       else
-        tag = tag4class(classes.first)
+        classes = []
       end
       attrs = scan_attrs(scan)
       if classes.any?
