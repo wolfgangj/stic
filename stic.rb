@@ -116,7 +116,7 @@ def scan_value(scan)
     var = scan.while(/[-_a-zA-Z0-9.]/)
     lookup_variable(var)
   else
-    scan.while(/[^ )]/)
+    scan.while(/[^ ),]/)
   end
 end
 
