@@ -196,14 +196,14 @@ def rep_nodes
       identifier = scan.while(/[-_a-zA-Z0-9.$]/)
       attrs = scan_attrs(scan)
       if identifier == 'CONTENT'
-        lookup_variable(' BLOCK ').call
+        lookup_variable(' BLOCK ').call(attrs)
       else
         filename = substitute_vars(identifier) + '.stic'
         scan.while(/ /)
         if scan.head == '{'
           src4block, locals4block = $src, $param_stack.last
-          attrs[' BLOCK '] = lambda do
-            with_src(src4block, locals4block) do
+          attrs[' BLOCK '] = lambda do |new_attrs|
+            with_src(src4block, locals4block.merge(new_attrs)) do
               $open_nodes.push(:BLOCK)
               rep_nodes
             end
