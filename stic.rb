@@ -18,11 +18,16 @@
 
 # read config that maps classes to tags
 $tags = {}
-src = File.new('html-tags')
-while line = src.gets
-  the_class, tag = line.split
-  $tags[the_class] = tag
+begin
+  src = File.new('html-tagsx')
+  while line = src.gets
+    the_class, tag = line.split
+    $tags[the_class] = tag
+  end
+rescue
+  STDERR.puts 'warning: could not read `html-tags` file'
 end
+
 def tag4class(the_class)
   $tags[the_class] || :div
 end
