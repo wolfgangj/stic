@@ -153,9 +153,18 @@ def rep_nodes
       scan = StrScan.new(line)
       scan.skip # drop first dot
       classes = scan.while(/[-_a-zA-Z0-9.$]/).split('.').map { |c| substitute_vars(c) }
-      tag = tag4class(classes.first)
+      if classes.first.upcase == classes.first
+        tag = classes.first.downcase
+        classes = classes[1..-1]
+      else
+        tag = tag4class(classes.first)
+      end
       attrs = scan_attrs(scan)
-      tag_start = "#{tag} class=\"#{classes.join(' ')}\"#{attrs2html(attrs)}"
+      if classes.any?
+        tag_start = "#{tag} class=\"#{classes.join(' ')}\"#{attrs2html(attrs)}"
+      else
+        tag_start = "#{tag}#{attrs2html(attrs)}"
+      end
       scan.while(/ /)
       case scan.head
       when '{'
