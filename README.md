@@ -26,7 +26,7 @@ menu-link a
 
 So your HTML will end up being semantic,
   but you can conveniently define the structure with your class names only.
-(In BEM, everything is done with classes anyway.)
+(In BEM, everything is done with classes anyway, so this feature helps to avoid some redundancy.)
 If several classes are given (as in the example below), the first one decides the tag.
 
 Now you can create a `.stic` file (this is not valid HTML yet, bear with me):
@@ -94,8 +94,9 @@ This can be done by using the percent sign `%` (which you also can combine with 
 </html>
 ```
 
-Some constructs usually appear repeatedly on a web page, so you can move them into a module.
-Since there will usually a bit of variation, you can pass arguments to a module:
+Some constructs usually appear repeatedly on a web page, so you can move them into a module
+  that you can include.
+For the parts which vary, you can pass arguments to a module:
 
 ```
 ;; example3.stic
