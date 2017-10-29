@@ -153,7 +153,9 @@ def rep_nodes
       scan = StrScan.new(line)
       if scan.head == '%'
         scan.skip
-        tag = scan.while(/[-_a-zA-Z0-9$]/)
+        tag = substitute_vars(scan.while(/[-_a-zA-Z0-9$]/))
+      else
+        tag = nil
       end
       if scan.head == '.'
         scan.skip # drop first dot
