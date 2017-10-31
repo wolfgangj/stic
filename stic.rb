@@ -19,7 +19,7 @@
 # read config that maps classes to tags
 $tags = {}
 begin
-  src = File.new('html-tagsx')
+  src = File.new('html-tags')
   while line = src.gets
     the_class, tag = line.split
     $tags[the_class] = tag
@@ -70,8 +70,9 @@ end
 
 # we want properly indented HTML
 $indent = 0
+$output = []
 def emit(str)
-  puts ('  ' * $indent) + str
+  $output.push(('  ' * $indent) + str)
 end
 
 # little bit of dynamic scoping for convenience
@@ -193,7 +194,7 @@ def rep_nodes
     when '@'
       scan = StrScan.new(line)
       scan.skip # drop at-sign
-      identifier = scan.while(/[-_a-zA-Z0-9.$]/)
+      identifier = scan.while(/[-_a-zA-Z0-9.$\/]/) # allow `path/to/file`
       attrs = scan_attrs(scan)
       if identifier == 'CONTENT'
         lookup_variable(' BLOCK ').call(attrs)
@@ -226,8 +227,11 @@ def rep_nodes
   end
 end
 
-raise 'no file name given (or too many)' unless ARGV.size == 1
+raise 'usage: stic INPUT-FILE OUTPUT-FILE' unless ARGV.size == 2
 with_src(File.new(ARGV.first)) do
   emit '<!DOCTYPE html>'
   rep_nodes
+end
+File.open(ARGV.last, 'w') do |result|
+  $output.each { |line| result.puts(line) }
 end

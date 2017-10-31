@@ -62,7 +62,7 @@ Now you can create a `.stic` file (this is not valid HTML yet, bear with me):
 </div>
 ```
 
-The usage of the `stic.rb` script is: `./stic.rb example.stic >example.html`
+The usage of the `stic.rb` script is: `./stic.rb example.stic example.html`.
 
 Automatically generating the matching tags for classes might be nice,
   but to get valid HTML, we also need the `html-head-body` mumbo-jumbo.
