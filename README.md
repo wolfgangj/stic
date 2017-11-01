@@ -181,9 +181,25 @@ A bonus thing `stic` does is handle a few common mistakes humans do:
 You can separate arguments with commas and you can use `=` instead of `:`.
 So `.foo(bar=baz, qux=frob)` is the same as `.foo(bar:baz qux:frob)`.
 
+## Using the Emacs major mode
+
+The procedure of setting up the major mode is standard,
+  but for those not experienced with Emacs, here's how do it:
+
+1. Put the `stic-mode.el` file in a directory like `~/.emacs.de/lisp`
+2. If the director is not in your load path yet, add it by inserting
+     `(push "~/.emacs.d/lisp" load-path)` into your Emacs config (e.g. `~/.emacs`).
+3. Below that, add `(require 'stic-mode)` to your Emacs config.
+4. If you don't want to restart Emacs for the change to take effect,
+     evaluate the two previously added commands
+     by inserting the cursor after each (in order) and press `C-x C-e`.
+5. When opening `*.stic` files, Emacs will now use `stic-mode`!
+
+The `stic-mode` currently just adds automatic indenting, i.e. command like
+pressing tab or `M-x indent-region` now follow `stic` conventions.
+
 ## TODOs
 
 - Syntax errors in the input are not always handled gracefully.
 - Everything after `;;` is discarded from the input, even if the `;;` appears inside of an attibute value.
-- Create editor plugin for automatic indenting.
 - Add example project with `Makefile` etc.
