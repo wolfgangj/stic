@@ -11,6 +11,7 @@ Features:
 - Include other files and pass arguments and blocks to them
 - Automatic code indentation possible (as opposed to e.g. HAML)
 - Can choose the correct tags automatically given the class of an element (useful for BEM)
+- Emacs major mode available
 
 ## Usage
 
@@ -186,8 +187,8 @@ So `.foo(bar=baz, qux="frob")` is the same as `.foo(bar:baz qux:'frob')`.
 The procedure of setting up the major mode is standard,
   but for those not experienced with Emacs, here's how do it:
 
-1. Put the `stic-mode.el` file in a directory like `~/.emacs.de/lisp`
-2. If the director is not in your load path yet, add it by inserting
+1. Put the `stic-mode.el` file in a directory like `~/.emacs.d/lisp`.
+2. If the directory is not in your load path yet, add it by inserting
      `(push "~/.emacs.d/lisp" load-path)` into your Emacs config (e.g. `~/.emacs`).
 3. Below that, add `(require 'stic-mode)` to your Emacs config.
 4. If you don't want to restart Emacs for the change to take effect,
@@ -195,11 +196,11 @@ The procedure of setting up the major mode is standard,
      by inserting the cursor after each (in order) and press `C-x C-e`.
 5. When opening `*.stic` files, Emacs will now use `stic-mode`!
 
-The `stic-mode` currently just adds automatic indenting, i.e. command like
+The `stic-mode` currently just adds automatic indenting, i.e. commands like
 pressing tab or `M-x indent-region` now follow `stic` conventions.
 
 ## TODOs
 
-- Syntax errors in the input are not always handled gracefully.
-- Everything after `;;` is discarded from the input, even if the `;;` appears inside of an attibute value.
 - Add example project with `Makefile` etc.
+- Syntax errors in the input are not always handled gracefully.
+- Everything after `;;` is discarded from the input, even if the `;;` appears inside of an attibute value. (Fixing this involves updating the Emacs mode to the new behaviour.)

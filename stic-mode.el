@@ -23,10 +23,6 @@
     map)
   "Keymap for stic major mode")
 
-(defun msg (what num)
-  (message what)
-  (string-to-number (message (number-to-string num))))
-
 (defun stic-indent-line ()
   "Interactively indent the current line and maybe reposition cursor."
   (interactive)
