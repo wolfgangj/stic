@@ -178,8 +178,8 @@ Those from the module where the block originally comes from are second.
 Those from the module are third.
 
 A bonus thing `stic` does is handle a few common mistakes humans do:
-You can separate arguments with commas and you can use `=` instead of `:`.
-So `.foo(bar=baz, qux=frob)` is the same as `.foo(bar:baz qux:frob)`.
+You can separate arguments with commas and you can use `=` instead of `:` and `"` instead of `'`.
+So `.foo(bar=baz, qux="frob")` is the same as `.foo(bar:baz qux:'frob')`.
 
 ## Using the Emacs major mode
 
