@@ -75,6 +75,12 @@ def emit(str)
   $output.push(('  ' * $indent) + str)
 end
 
+# void elements are those without closing tag
+def void_element?(tag)
+  %w(area base br col command embed hr img input keygen
+     link meta param source track wbr).include?(tag)
+end
+
 # little bit of dynamic scoping for convenience
 $src, $open_nodes = nil, nil
 $param_stack = []
@@ -187,7 +193,11 @@ def rep_nodes
         $indent -= 1
         emit "</#{tag}>"
       when nil
-        emit "<#{tag_start} />"
+        if void_element?(tag)
+          emit "<#{tag_start} />"
+        else
+          emit "<#{tag_start}></#{tag}>"
+        end
       else
         emit "<#{tag_start}>#{substitute_vars(scan.rest)}</#{tag}>"        
       end
