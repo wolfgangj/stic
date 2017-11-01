@@ -3,10 +3,11 @@
 The `stic` is a very simple tool (~200 lines of Ruby) to convert a sane markup format to HTML5.
 I wrote it in particular to make working with
   the (really helpful) [BEM](https://css-tricks.com/bem-101/) convention more convenient.
+I actually use this for building a commercial website currently, so it's getting battle-tested.
 
 Features:
 
-- Convenient alternative syntax for HTML5
+- Nicer syntax for HTML5
 - Include other files and pass arguments and blocks to them
 - Automatic code indentation possible (as opposed to e.g. HAML)
 - Can choose the correct tags automatically given the class of an element (useful for BEM)
@@ -173,10 +174,10 @@ A module can include the content of the block with `@CONTENT` (to which you can 
 
 The exact semantics for variables in blocks are:
 Params passed to the block shadow others.
-Those from the module where the block comes from are second.
+Those from the module where the block originally comes from are second.
 Those from the module are third.
 
-A bonus thing `stic` does is handle a few common mistakes well:
+A bonus thing `stic` does is handle a few common mistakes humans do:
 You can separate arguments with commas and you can use `=` instead of `:`.
 So `.foo(bar=baz, qux=frob)` is the same as `.foo(bar:baz qux:frob)`.
 
@@ -184,3 +185,5 @@ So `.foo(bar=baz, qux=frob)` is the same as `.foo(bar:baz qux:frob)`.
 
 - Syntax errors in the input are not always handled gracefully.
 - Everything after `;;` is discarded from the input, even if the `;;` appears inside of an attibute value.
+- Create editor plugin for automatic indenting.
+- Add example project with `Makefile` etc.
