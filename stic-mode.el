@@ -26,16 +26,21 @@
 (defun stic-indent-line ()
   "Interactively indent the current line and maybe reposition cursor."
   (interactive)
-  (indent-rigidly (line-beginning-position)
-                  (line-end-position)
-                  (- (find-indentation-level)
-                     (current-indentation)))
+  (modify-indentation (- (find-indentation-level)
+                         (current-indentation)))
   (if (string-match "^ +\n" (thing-at-point 'line t))
       (end-of-line)
     (when (string-match "^ *$"
                         (buffer-substring-no-properties (line-beginning-position) (point)))
       (while (= ?  (following-char))
         (forward-char 1)))))
+
+(defun modify-indentation (n)
+  (save-excursion
+    (beginning-of-line)
+    (if (> n 0)
+        (dotimes (x n nil) (insert-char ? ))
+      (delete-forward-char (- n)))))
 
 (defun current-indentation ()
   (save-excursion
