@@ -39,7 +39,7 @@
   (save-excursion
     (beginning-of-line)
     (if (> n 0)
-        (dotimes (x n nil) (insert-char ? ))
+        (insert-char ?   n)
       (delete-forward-char (- n)))))
 
 (defun current-indentation ()
@@ -66,7 +66,7 @@
     (if (bobp)
         0
       (forward-line -1)
-      (if (= ?\n (following-char))
+      (if (current-line-is-empty)
           (find-indentation-level-based-on-previous-indentation)
         (let ((stripped-line
                (replace-regexp-in-string " *;;.*" "" (thing-at-point 'line t))))
@@ -74,6 +74,9 @@
                    (equal "{" (last-char-before-newline stripped-line)))
               (+ 2 (current-indentation))
             (current-indentation)))))))
+
+(defun current-line-is-empty ()
+  (string-match "^ *\n$" (thing-at-point 'line t)))
 
 (defun stic-mode ()
   "Major mode for editing stic input files"
