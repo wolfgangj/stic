@@ -1,0 +1,38 @@
+@mod/page (title: 'Welcome') {
+  .normal-section {
+    .normal-section__title This is an example page
+    .normal-section__content {
+      The only purpose of this page is to show how
+      .code stic
+      can be used in a project.
+      Otherwise, there really is not much point in this.
+      Everything is kept very simple on purpose.
+    }
+  }
+  .boxed-section {
+    .boxed-section__title The BEM convention
+    .boxed-section__content {
+      This example page uses BEM (block, element, modifier),
+      a popular CSS convention.
+      The class names like
+      .code boxed-section__title
+      seem weird at first, but it turns out this gives a very clear structure
+      to the code and makes working with it easier in the long run.
+    }
+  }
+  .normal-section {
+    .normal-section__title {
+      .code stic
+      can be used flexibly
+    }
+    .normal-section__content {
+      You can use this tool in any way you like.
+      This example page is just here to give you an idea of how it can be used.
+      I do it like this, because working with old-school tools like
+      .code sed
+      and
+      .code make
+      is something I enjoy.
+    }
+  }
+}

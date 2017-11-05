@@ -1,0 +1,10 @@
+header header
+header__title h1
+content article
+normal-section section
+normal-section__title h2
+normal-section__content p
+boxed-section section
+boxed-section__title h2
+boxed-section__content p
+code code

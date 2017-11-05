@@ -1,0 +1,21 @@
+// include padding and border in height and width:
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: TEXT-COLOR;
+  background-color: BACKGROUND-COLOR;
+}
+
+.code {
+  font-style: normal;
+}
+
+.content {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}

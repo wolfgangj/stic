@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  background-color: PRIMARY-COLOR;
+  padding: 20px;
+}
+
+.header__title {
+  text-align: center;
+  text-size: 1.5em;
+  font-weight: bold;
+  font-style: italic;
+  color: BACKGROUND-COLOR;
+  margin: 0;
+}

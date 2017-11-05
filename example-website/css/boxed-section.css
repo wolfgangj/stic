@@ -1,0 +1,12 @@
+.boxed-section {
+  padding: SECTION-SPACING;
+  margin: SECTION-SPACING;
+  background-color: PRIMARY-COLOR;
+}
+
+.boxed-section__title {
+  font-weight: bold;
+  font-style: italic;
+  font-size: SECTION-TITLE-SIZE;
+  color: BACKGROUND-COLOR;
+}

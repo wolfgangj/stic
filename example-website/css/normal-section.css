@@ -1,0 +1,12 @@
+.normal-section {
+  // for alignment with boxed sections
+  padding: SECTION-SPACING;
+  margin: SECTION-SPACING;
+}
+
+.normal-section__title {
+  font-weight: bold;
+  font-style: italic;
+  font-size: SECTION-TITLE-SIZE;
+  color: PRIMARY-COLOR;
+}
